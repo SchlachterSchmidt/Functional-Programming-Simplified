@@ -101,4 +101,3 @@ println(dub(55))
 
 val fullName = (p: Person) => s"${p.firstName} ${p.lastName}"
 println(fullName(p2))
-
