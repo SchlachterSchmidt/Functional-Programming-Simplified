@@ -12,7 +12,6 @@ println(evens)
 
 // in this sense, functional code is more higher level, you dont care how the filter works, you just express the
 // condition that you are filtering for
-
 def sayHello(callback: () => Unit): Unit = {
   callback()
 }
@@ -100,4 +99,3 @@ def startsWith(char: String): String => Boolean = {
   str => str.startsWith(char)
 }
 filterMeSomething(startsWith("P"), someStrings)
-

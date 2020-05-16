@@ -14,7 +14,6 @@ def timer[A](blockOfCode: => A) = {
 
 // the timer method uses the by-name syntax, and because we are returning the generic type A, we can receive back
 // Unit, Int, Map, Seq etc and we can use it for all sorts of things
-
 val (result1, time1 ) = timer(println("Hello world"))
 println(time1)
 
@@ -41,15 +40,14 @@ def test[A](blockOfCode: => A) = {
 test { System.currentTimeMillis }
 // the output shows that the code block is evaluated each time anew
 
-// to show how this can be much nicer than using a functional imput parameter as before:
-def myAssert(f: () => Boolean): Unit = {
-  if (!f()) throw new AssertionError()
-}
+// to show how this can be much nicer than using a functional input parameter as before:
+def myAssert(f: () => Boolean): Unit =
+  if (!f()) throw new AssertionError
+
 
 myAssert(() => 5 > 3) // works, but it is ugly
 
-def myOtherAssert(f: => Boolean) {
-  if(!f) throw new AssertionError()
-}
-myOtherAssert(5 > 3) // much cleaner
+def myOtherAssert(f: => Boolean) =
+  if(!f) throw new AssertionError
 
+myOtherAssert(5 > 3) // much cleaner
