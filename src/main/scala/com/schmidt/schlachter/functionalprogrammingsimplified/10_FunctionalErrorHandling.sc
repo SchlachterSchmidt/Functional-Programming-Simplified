@@ -116,7 +116,7 @@ val responseSuccess = Response("message", 200)
 handleResponse(responseSuccess)
 
 
-// Addendum: Or is a 3rd party approach to Either / Try
+// Addendum 1: Or is a 3rd party approach to Either / Try
 import org.scalactic.{ErrorMessage, Or, Good, Bad}
 // what is implied with Option or Either is very clear with Or
 def makeIntOr(s: String): Int Or ErrorMessage = {
@@ -131,3 +131,12 @@ makeIntOr("baz") match {
   case Good(i) => println(s"good $i")
   case Bad(b) => println(s"bad: $b")
 }
+
+
+// Addendum 2: flatMap
+val x = makeInt("1")
+val y = makeInt("2")
+// this returns Option[Option[Int]] which is a bit cumbersome to use
+x map {a => y map { b => a + b}}
+// where ths returns Option[Int]. Much better. But not as nice as for comprehension
+x flatMap {a => y map { b => a + b}}
