@@ -23,7 +23,8 @@ def h(a: Int): Debuggable[Int] = {
   val res = a * 4
   Debuggable(res, List(s" h($a) =  $res"))
 }
-
+cd App
+cd
 val intResult = for {
   a <- f(100)
   b <- g(a)
